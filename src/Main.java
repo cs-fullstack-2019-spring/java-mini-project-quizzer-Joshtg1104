@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 
 public class Main {
     public static ArrayList<String> masterList = new ArrayList<>();
-    public static HashMap<String, String> quizzoid = new HashMap<>();
+    public static ArrayList<String[]> quizzoid = new ArrayList<>();
     public static void main(String[] args) {
         File quizbee = new File("/home/student/CodeSchool/IdeaProjects/Java/java-mini-project-quizzer-Joshtg1104/quizzer.txt");
         Scanner scanQuiz = null;
@@ -15,27 +15,49 @@ public class Main {
             scanQuiz = new Scanner(quizbee);
             while(scanQuiz.hasNextLine()){
                 String buzz = scanQuiz.nextLine();
-                System.out.println(buzz);
                 masterList.add(buzz);
-                int[] beep = getRandomQuestionNumbers(5,0, 5);
-                String question = masterList.get(beep[0]);
-                String[] bits = question.split(", ");
-                quizzoid.put(bits[0],bits[12345]);
-                System.out.println(question);
-//
-//                System.out.println(bits);
-//                System.out.println("Buzz");
-//                quizzoid.put(bits[0],bits[1],bits[2],bits[3],bits[4],bits[5]);
+                System.out.println(buzz);
             }
-            Scanner guess = new Scanner(System.in);
-        } catch (FileNotFoundException e) {
+            System.out.println(masterList);
+                int[] beep = getRandomQuestionNumbers(5,0, 5);
+                System.out.println("Do You Even Code");
+                for(int i = 0;i<beep.length; i++)
+                    {
+                        System.out.println(beep[i]);
+
+//                System.out.println("System check");
+                String question = masterList.get(beep[i]);
+//                System.out.println("If a Wood Chuck Could Chuck");
+                String[] parts = question.split(", ");
+                System.out.println(Arrays.toString(parts));
+//                System.out.println("Deal or No Deal");
+                quizzoid.add(parts);
+
+
+
+//                System.out.println("Is this where you crap out");
+//                System.out.println(quizzoid);
+////
+////                System.out.println(bits);
+////                System.out.println("Buzz");
+////                quizzoid.put(bits[0],bits[1],bits[2],bits[3],bits[4],bits[5]);
+            }
+                for(String[] eachItem:quizzoid){
+                    System.out.println("Hello");
+                    System.out.print(eachItem[0]);
+            }
+
+                System.out.println(quizzoid);
+//            Scanner guess = new Scanner(System.in);
+        }
+        catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        System.out.println("Hello World!");
-        int[] qIndex = getRandomQuestionNumbers(3,1, 5);
-
-        System.out.println(Arrays.toString(qIndex));
+//        System.out.println("Hello World!");
+//        int[] qIndex = getRandomQuestionNumbers(3,1, 5);
+//
+//        System.out.println(Arrays.toString(qIndex));
     }
 
     public static final Random gen = new Random();
